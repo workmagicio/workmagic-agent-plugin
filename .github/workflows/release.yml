@@ -1,0 +1,60 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check manifests
+        run: python3 tools/check_manifests.py
+
+      - name: Verify tag matches plugin version
+        run: |
+          TAG="${GITHUB_REF_NAME#v}"
+          PLUGIN_VERSION=$(python3 -c "import json; print(json.load(open('.claude-plugin/plugin.json'))['version'])")
+          echo "tag=$TAG plugin.json=$PLUGIN_VERSION"
+          if [ "$TAG" != "$PLUGIN_VERSION" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME ($TAG) does not match .claude-plugin/plugin.json version $PLUGIN_VERSION"
+            exit 1
+          fi
+
+      - name: Build ChatGPT ZIP
+        run: python3 tools/build_zip.py chatgpt
+
+      - name: Extract changelog notes
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          awk -v v="$VERSION" '
+            $0 ~ ("^## \\[" v "\\]") { grab = 1; next }
+            grab && /^## \[/ { exit }
+            grab { print }
+          ' CHANGELOG.md > notes.md
+          sed -i -e '/./,$!d' notes.md
+          if [ ! -s notes.md ]; then
+            echo "::error::No changelog section found for $VERSION in CHANGELOG.md"
+            exit 1
+          fi
+          echo "---- release notes ----"
+          cat notes.md
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            dist/workmagic-chatgpt.zip \
+            --title "$GITHUB_REF_NAME" \
+            --notes-file notes.md

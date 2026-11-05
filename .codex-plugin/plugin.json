@@ -1,0 +1,26 @@
+{
+  "name": "workmagic",
+  "version": "1.0.0",
+  "description": "Ask questions about your WorkMagic attribution data, diagnose swings, compare attribution models, read lift test results, and plan media budgets — using your own WorkMagic account through the WorkMagic MCP server.",
+  "author": {
+    "name": "WorkMagic",
+    "url": "https://workmagic.io"
+  },
+  "license": "MIT",
+  "keywords": [
+    "workmagic",
+    "attribution",
+    "incrementality",
+    "lift-test",
+    "mmm",
+    "budget",
+    "ecommerce",
+    "marketing"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "WorkMagic",
+    "category": "Business"
+  }
+}

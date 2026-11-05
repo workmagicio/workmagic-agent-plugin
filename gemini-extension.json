@@ -1,0 +1,10 @@
+{
+  "name": "workmagic",
+  "version": "1.0.0",
+  "description": "Ask questions about your WorkMagic attribution data, diagnose swings, compare attribution models, read lift test results, and plan media budgets — using your own WorkMagic account through the WorkMagic MCP server.",
+  "mcpServers": {
+    "workmagic": {
+      "httpUrl": "https://mcp.workmagic.io/mcp"
+    }
+  }
+}

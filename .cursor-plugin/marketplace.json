@@ -1,0 +1,17 @@
+{
+  "name": "workmagic-plugins",
+  "owner": {
+    "name": "WorkMagic",
+    "email": "support@workmagic.io"
+  },
+  "metadata": {
+    "description": "WorkMagic plugin: attribution, lift test readouts and media budget planning from your WorkMagic data."
+  },
+  "plugins": [
+    {
+      "name": "workmagic",
+      "source": "./",
+      "description": "Attribution, lift test readouts and media budget planning from your WorkMagic data."
+    }
+  ]
+}

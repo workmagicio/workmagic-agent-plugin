@@ -1,0 +1,42 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "workmagic",
+  "version": "1.0.0",
+  "description": "Ask questions about your WorkMagic attribution data, diagnose swings, compare attribution models, read lift test results, and plan media budgets — using your own WorkMagic account through the WorkMagic MCP server.",
+  "icon": "./assets/logo.png",
+  "author": {
+    "name": "WorkMagic",
+    "url": "https://workmagic.io"
+  },
+  "homepage": "https://workmagic.io",
+  "license": "MIT",
+  "keywords": [
+    "workmagic",
+    "attribution",
+    "incrementality",
+    "lift-test",
+    "mmm",
+    "budget",
+    "ecommerce",
+    "marketing"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "WorkMagic",
+        "shortDescription": "Attribution, lift test readouts and media budget planning from your WorkMagic data",
+        "category": "Business",
+        "websiteURL": "https://workmagic.io",
+        "supportURL": "https://workmagic.io/support",
+        "privacyPolicyURL": "https://workmagic.io/privacy",
+        "termsOfServiceURL": "https://workmagic.io/terms",
+        "defaultPrompt": [
+          "What was my Meta ROAS last week?",
+          "Why did my Google attribution drop on Tuesday?",
+          "How should I split next month's ad budget?"
+        ],
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
+}

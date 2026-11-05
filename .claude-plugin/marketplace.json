@@ -1,0 +1,19 @@
+{
+  "name": "workmagic-plugins",
+  "owner": {
+    "name": "WorkMagic",
+    "url": "https://workmagic.io"
+  },
+  "metadata": {
+    "description": "WorkMagic plugin for Claude.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "workmagic",
+      "source": "./",
+      "description": "Attribution, lift test readouts and media budget planning from your WorkMagic data",
+      "version": "1.0.0"
+    }
+  ]
+}
