@@ -119,7 +119,10 @@ def main() -> int:
     # Nothing in the shipped skills may still point at a server-side skill loader or
     # at a skill this release doesn't include.
     banned = ["skills_read", "skills-read", "skills-list", "attribution-weekly-report",
-              "lift-test-creation", "conversation-log", "user_original"]
+              "lift-test-creation", "conversation-log", "user_original",
+              # Internal-only hosts must never ship in a public skill (points customers at
+              # help.workmagic.io instead; also keeps the directory's credential scan clean).
+              "larksuite"]
     leftovers = []
     for f in DEST.rglob("*"):
         if f.is_file():
