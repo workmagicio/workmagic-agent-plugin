@@ -9,7 +9,10 @@
           "auth": {
             "type": "oauth",
             "authorizationUrl": "https://platform.workmagic.io/api/oauth2/authorize",
-            "tokenUrl": "https://platform.workmagic.io/api/oauth2/token"
+            "tokenUrl": "https://platform.workmagic.io/api/oauth2/token",
+            "client": {
+              "mode": "dcr"
+            }
           }
         }
       }
