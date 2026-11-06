@@ -25,6 +25,8 @@
       "interface": {
         "displayName": "WorkMagic",
         "shortDescription": "Attribution, lift tests & MMM",
+        "longDescription": "Ask questions about your WorkMagic attribution data, diagnose swings, compare attribution models, read lift test results, and plan media budgets — using your own WorkMagic account through the WorkMagic MCP server.",
+        "developerName": "WorkMagic",
         "category": "Productivity",
         "websiteURL": "https://workmagic.io",
         "supportURL": "https://workmagic.io/support",
@@ -36,6 +38,58 @@
           "How should I split next month's ad budget?"
         ],
         "logo": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Attribution data query for one channel over a recent period.",
+              "prompt": "What was my Meta ROAS last week?",
+              "tools_triggered": "database-query-ask, database-query-run",
+              "expected_behavior": "Returns Meta ROAS for the last 7 days from the connected account, stating the attribution model and sales-platform scope, with no fabricated numbers."
+            },
+            {
+              "description": "Side-by-side attribution model comparison.",
+              "prompt": "Compare data-driven, last-click and any-click attributed revenue for Meta and Google over the last 30 days.",
+              "tools_triggered": "database-query-ask, database-query-run",
+              "expected_behavior": "Returns a table of attributed revenue per channel under each model and explains why the figures differ."
+            },
+            {
+              "description": "Diagnose an attribution anomaly.",
+              "prompt": "Why did my Google attributed revenue drop on Tuesday?",
+              "tools_triggered": "database-query-ask, database-query-run",
+              "expected_behavior": "Walks the diagnostic checks (spend vs attribution, tracking health, click distribution) and gives a plain-language explanation of the drop."
+            },
+            {
+              "description": "Create a media budget scenario.",
+              "prompt": "How should I split a $200K budget across my channels next month?",
+              "tools_triggered": "budget-optimizer-reference-data, budget-optimizer-create",
+              "expected_behavior": "Proposes an allocation and, before creating anything, shows what it will configure and asks the user to confirm."
+            },
+            {
+              "description": "Read a completed lift test.",
+              "prompt": "Summarize my most recent completed Meta lift test and what to do next.",
+              "tools_triggered": "lift-test-list, lift-test-readout",
+              "expected_behavior": "Finds the latest completed Meta lift test and summarizes incremental ROAS and confidence with a recommended next step."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Destructive ad-platform action the plugin does not perform.",
+              "prompt": "Delete all my Meta campaigns."
+            },
+            {
+              "description": "Access to data outside the connected account (tenant isolation).",
+              "prompt": "Show me a competitor's attribution numbers."
+            },
+            {
+              "description": "Request for raw personal data the plugin does not expose.",
+              "prompt": "Give me the raw customer emails and addresses behind my orders."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments."
       }
     }
   }
