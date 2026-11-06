@@ -24,8 +24,8 @@
     "com.openai": {
       "interface": {
         "displayName": "WorkMagic",
-        "shortDescription": "Attribution, lift test readouts and media budget planning from your WorkMagic data",
-        "category": "Business",
+        "shortDescription": "Attribution, lift tests & MMM",
+        "category": "Productivity",
         "websiteURL": "https://workmagic.io",
         "supportURL": "https://workmagic.io/support",
         "privacyPolicyURL": "https://workmagic.io/privacy",
