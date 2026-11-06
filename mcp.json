@@ -10,6 +10,7 @@
             "type": "oauth",
             "authorizationUrl": "https://platform.workmagic.io/api/oauth2/authorize",
             "tokenUrl": "https://platform.workmagic.io/api/oauth2/token",
+            "registrationUrl": "https://platform.workmagic.io/api/connect/register",
             "client": {
               "mode": "dcr"
             }
