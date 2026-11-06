@@ -80,4 +80,4 @@ User confirms. Call `budget-optimizer-create`. Quote `scenarioURL` verbatim from
 
 Wait \~1 min. Call `budget-optimizer-forecast`. `status=ready`. Summarize:
 
-*"Scenario created — \[Open in MBO →\](https://app.workmagic.io/...). Recommended allocation: Meta \$310K (+12% vs baseline), Google \$190K (−15%). Expected sales lift: \~+\$240K vs reference allocation. Google_Brand_Search and Meta_Retargeting held at reference spend per saturation lock. Click the link to open the scenario in MBO — saturation curves, full per-tactic breakdown, and downloadable spreadsheet are there."*
+*"Scenario created — Open in MBO (link in the WorkMagic app). Recommended allocation: Meta \$310K (+12% vs baseline), Google \$190K (−15%). Expected sales lift: \~+\$240K vs reference allocation. Google_Brand_Search and Meta_Retargeting held at reference spend per saturation lock. Click the link to open the scenario in MBO — saturation curves, full per-tactic breakdown, and downloadable spreadsheet are there."*

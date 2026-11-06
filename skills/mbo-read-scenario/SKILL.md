@@ -170,4 +170,4 @@ Full failure-mode catalog lives in references/failure-modes.md. Edge cases & rou
 
 **Risk class**: all tools used are R0. No system-level or skill-level confirmation needed.
 
-**Reference docs**: [Media Budget Optimizer knowledge base](https://help.workmagic.io/) — Reading Your Results + FAQ.
+**Reference docs**: WorkMagic Help Center — Media Budget Optimizer: Reading Your Results + FAQ.
