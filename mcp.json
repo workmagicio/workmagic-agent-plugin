@@ -7,7 +7,9 @@
       "extensions": {
         "com.openai": {
           "auth": {
-            "type": "oauth"
+            "type": "oauth",
+            "authorizationUrl": "https://platform.workmagic.io/api/oauth2/authorize",
+            "tokenUrl": "https://platform.workmagic.io/api/oauth2/token"
           }
         }
       }
