@@ -117,6 +117,17 @@ codex plugin marketplace add workmagicio/workmagic-agent-plugin
 
 Then install `workmagic` from `/plugins`.
 
+本地安装：下载 release 中的 `workmagic-codex.zip`，或在仓库中执行以下命令构建并安装：
+
+```sh
+python3 tools/build_zip.py codex
+unzip dist/workmagic-codex.zip -d dist/workmagic-codex
+codex plugin marketplace add ./dist/workmagic-codex
+codex plugin add workmagic@workmagic-plugins
+```
+
+`workmagic-chatgpt.zip` 用于 ChatGPT 插件门户；Codex 本地安装使用 `workmagic-codex.zip`。
+
 ### Gemini CLI
 
 ```

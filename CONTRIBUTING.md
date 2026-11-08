@@ -51,12 +51,19 @@ still refers to the server-side skill loader or to a skill this release doesn't 
    `CHANGELOG.md`.
 2. `python3 tools/check_manifests.py` — names, versions and MCP URLs agree; skills have frontmatter.
 3. `claude plugin validate .`
-4. Tag `vX.Y.Z` and push. The release workflow checks the manifests, builds the ChatGPT ZIP and
+4. Tag `vX.Y.Z` and push. The release workflow checks the manifests, builds the ChatGPT and Codex ZIPs and
    publishes a GitHub release with that version's changelog. Claude, Codex, Cursor and Gemini pick
    up the tag from the repo.
 5. Upload the release's `workmagic-chatgpt.zip` to the OpenAI portal.
 
 Ship small and often: each release shows up on the repo page and notifies everyone watching it.
+
+### 本地验证 Codex 安装包
+
+执行 README 的 Codex 本地安装命令。`python3 tools/build_zip.py codex` 从仓库配置构建独立的
+`dist/workmagic-codex.zip`，包含 `.agents/plugins/marketplace.json`、
+`.codex-plugin/plugin.json`、`.mcp.json` 及共享技能和资源。marketplace 的 `./` 源路径
+指向解压后的根目录，不需要手工补文件。ChatGPT ZIP 继续仅包含 ChatGPT 所需配置。
 
 ## Repository presentation
 
