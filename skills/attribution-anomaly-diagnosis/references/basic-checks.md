@@ -4,7 +4,7 @@ These rule out config / product-design causes. The majority of "attribution = 0"
 
 ### 3a. Did spend change?
 
-Fastest first check. If spend dropped proportionally, attribution dropping proportionally is correct — no further diagnosis. Template → `templates/02-spend-vs-attribution.sql`
+Fastest first check. If spend dropped proportionally, attribution dropping proportionally is correct — no further diagnosis. Template → `templates/02-spend-vs-attribution.txt`
 
 | **Spend change** | **attr_orders change** | **Conclusion** |
 |-|-|-|
@@ -23,7 +23,7 @@ Ask CS or client which sales-platform dashboard they're looking at. Known-invali
 
 ### 3c. [Attribution = 0 only] Measurement Readiness
 
-If product design is ruled out and attribution is still 0, check measurement readiness. Template → `templates/03-measurement-readiness.sql`
+If product design is ruled out and attribution is still 0, check measurement readiness. Template → `templates/03-measurement-readiness.txt`
 
 | **Status** | **Meaning** |
 |-|-|

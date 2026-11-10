@@ -1,12 +1,12 @@
 ---
 name: mbo-read-scenario
 description: Interpret existing MBO scenario results — read one, compare two, or reconcile MBO against attribution, lift tests, or actual spend. Read-only; "how much should I spend" goes to mbo-create-scenario.
-category: mbo
-risk: R0
-version: 1.1.0
-last-updated: 2026-09-23
-
-references:
+metadata:
+  category: mbo
+  risk: R0
+  version: 1.1.0
+  last-updated: 2026-09-23
+  references:
   - references/inputs-detail.md
   - references/mode-detection.md
   - references/basic-read-mode.md
@@ -20,14 +20,12 @@ references:
   - references/edge-cases.md
   - references/failure-modes.md
   - references/key-concepts.md
-
-templates:
+  templates:
   - templates/basic-read-output.md
   - templates/scenario-compare-output.md
   - templates/mbo-vs-attribution-output.md
   - templates/mbo-vs-lift-test-output.md
-
-examples:
+  examples:
   - examples/example-goal-vs-projection-mismatch.md
 ---
 

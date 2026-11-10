@@ -1,24 +1,22 @@
 ---
 name: attribution-edge-routing
 description: Recognize when a user request falls outside attribution's capability boundary and route it gracefully — to another WM product (MBO / Lift Test / Creative Magic / Ads Magic / Audience Magic), to a human (CSM / DS / Eng), or to a clean decline that bridges back to what attribution can answer.
-category: attribution
-risk: R0
-version: 1.1.0
-last-updated: 2026-09-23
-
-references:
-- references/boundary-types.md
-- references/routing-matrix.md
-- references/output-template.md
-- references/wm-products.md
-- references/edge-cases.md
-- references/failure-modes.md
-
-templates:
-- templates/routing-response.md
-
-examples:
-- examples/example-A-forecast-ask.md
+metadata:
+  category: attribution
+  risk: R0
+  version: 1.1.0
+  last-updated: 2026-09-23
+  references:
+  - references/boundary-types.md
+  - references/routing-matrix.md
+  - references/output-template.md
+  - references/wm-products.md
+  - references/edge-cases.md
+  - references/failure-modes.md
+  templates:
+  - templates/routing-response.md
+  examples:
+  - examples/example-A-forecast-ask.md
 ---
 
 ## 1. Purpose

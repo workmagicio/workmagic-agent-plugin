@@ -1,23 +1,21 @@
 ---
 name: attribution-model-comparison
 description: Pull attribution numbers under multiple attribution models side-by-side and explain why they differ in business language. Default 4-way comparison (idda / dda / last_click / platform_reported).
-category: attribution
-risk: R0
-version: 1.2.0
-last-updated: 2026-09-23
-
-references:
-- references/model-reference.md
-- references/diff-patterns.md
-- references/output-template.md
-- references/edge-cases.md
-- references/failure-modes.md
-
-templates:
-- templates/01-multi-model-comparison.sql
-
-examples:
-- examples/example-A-meta-multi-model.md
+metadata:
+  category: attribution
+  risk: R0
+  version: 1.2.0
+  last-updated: 2026-09-23
+  references:
+  - references/model-reference.md
+  - references/diff-patterns.md
+  - references/output-template.md
+  - references/edge-cases.md
+  - references/failure-modes.md
+  templates:
+  - templates/01-multi-model-comparison.txt
+  examples:
+  - examples/example-A-meta-multi-model.md
 ---
 
 ## 1. Purpose
@@ -77,7 +75,7 @@ Required for the `ctx` timestamp `database-query-run` needs.
 
 <callout emoji="🛑">
 **HARD RULE — copy the template, then fill placeholders**
-Copy `templates/01-multi-model-comparison.sql`. Single `CASE WHEN` query with one branch per model, NOT N separate queries — guarantees comparison is on the same row set (same time range, filters, dedup).
+Copy `templates/01-multi-model-comparison.txt`. Single `CASE WHEN` query with one branch per model, NOT N separate queries — guarantees comparison is on the same row set (same time range, filters, dedup).
 Fill: `{ads_platform}` / `{sales_platform}` / `{start_date}` / `{end_date}`, then add the rows for the model variants the user asked for.
 </callout>
 
@@ -134,7 +132,7 @@ The user picks based on their decision context. Pushing one as the answer presum
 
 ## 7. CRITICAL rules (top 9 — full list in references/failure-modes.md)
 
-1. **Always copy the template SQL** (`templates/01-multi-model-comparison.sql`) — never run N separate queries; they can drift on filters / dedup and produce non-comparable numbers
+1. **Always copy the template SQL** (`templates/01-multi-model-comparison.txt`) — never run N separate queries; they can drift on filters / dedup and produce non-comparable numbers
 2. **Never compare click-based models on a non-DTC sales platform** — last_click / first_click / any_click are NOT valid on Amazon Store and similar; only iDDA / DDA / platform_reported are. Dropping click models silently is also wrong — tell user once.
 3. **Never mix multiple sales platforms in one comparison row** — attribution is per sales platform AND valid model set differs. Run separately per sales platform.
 4. **Never skip `database-query-ask`** before SQL — `ctx` required

@@ -9,7 +9,7 @@
 
 #### A1 — UTM / tracking health
 
-Template → `templates/04-utm-health.sql`
+Template → `templates/04-utm-health.txt`
 
 | **unmatch_orders_ratio** | **Meaning** |
 |-|-|
@@ -25,7 +25,7 @@ Per-ad UTM signals:
 
 #### A2 — Click distribution shift
 
-Template → `templates/05-click-distribution.sql`
+Template → `templates/05-click-distribution.txt`
 
 | **Signal** | **Meaning** |
 |-|-|
@@ -41,7 +41,7 @@ Template → `templates/05-click-distribution.sql`
 2. **VTA (View-Through Attribution)** — platform-reported VTA from Meta / TikTok / Pinterest / Snap
 3. **PPS (Post-Purchase Survey)** — user fills survey on T, system processes on T+2, then backfills to T (T+2 delay)
 
-**B1 — Compare DDA vs Any Click first.** If trends are identical, the issue is on click/touchpoint side → go back to Branch A. Template → `templates/06-dda-vs-anyclick.sql`
+**B1 — Compare DDA vs Any Click first.** If trends are identical, the issue is on click/touchpoint side → go back to Branch A. Template → `templates/06-dda-vs-anyclick.txt`
 
 **B2-1 — VTA change.** Only Meta / TikTok / Pinterest / Snap support VTA. If platform-reported VTA suddenly increases or drops to 0, DDA shifts accordingly.
 
@@ -57,7 +57,7 @@ Template → `templates/05-click-distribution.sql`
 
 **C2 — PPS.** Same T+2 backfill mechanism as Branch B. If iDDA shows small retro-edits while DDA is stable, PPS is likely.
 
-**C3 — Lift test calibration (the iDDA-specific cause).** When a new lift test result is applied, iDDA **retroactively rewrites** the historical window. A low-lift result lowers the platform's weight and drags historical attribution down. Template → `templates/07-lift-test-results.sql`
+**C3 — Lift test calibration (the iDDA-specific cause).** When a new lift test result is applied, iDDA **retroactively rewrites** the historical window. A low-lift result lowers the platform's weight and drags historical attribution down. Template → `templates/07-lift-test-results.txt`
 
 | **Signal** | **Meaning** |
 |-|-|

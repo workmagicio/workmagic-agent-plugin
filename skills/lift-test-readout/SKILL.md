@@ -1,11 +1,12 @@
 ---
 name: lift-test-readout
 description: Read and act on completed lift test results — interpret iROAS, confidence scores, and turn the data into a post-test decision.
-category: lift-test
-risk: R0
-version: 1.1.1
-last-updated: 2026-10-26
-references:
+metadata:
+  category: lift-test
+  risk: R0
+  version: 1.1.1
+  last-updated: 2026-10-26
+  references:
   - references/test-resolution.md
   - references/terminology.md
   - references/sop-detail.md

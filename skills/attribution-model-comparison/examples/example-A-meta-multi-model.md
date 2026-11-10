@@ -24,7 +24,7 @@ Confirm: `attr_orders`, `attr_sales`, `ad_spend`, `attr_model_name`, `ads_platfo
 
 #### Step 4 — Copy template SQL
 
-Copy `templates/01-multi-model-comparison.sql`, fill `{ads_platform}=Meta`, `{sales_platform}=Shopify`, `{start_date}=2026-05-26`, `{end_date}=2026-06-25`.
+Copy `templates/01-multi-model-comparison.txt`, fill `{ads_platform}=Meta`, `{sales_platform}=Shopify`, `{start_date}=2026-05-26`, `{end_date}=2026-06-25`.
 
 #### Step 5 — Compute deltas
 

@@ -1,24 +1,22 @@
 ---
 name: attribution-custom-dimension
 description: Handle attribution queries sliced by a business label ("by audience" / "by region" / "by brand") that is not a native field — it lives in campaign names and only becomes queryable once a Naming Convention (NC) rule is configured.
-category: attribution
-risk: R1
-version: 1.2.1
-last-updated: 2026-09-28
-
-references:
-- references/state-routing.md
-- references/output-template.md
-- references/edge-cases.md
-- references/failure-modes.md
-
-templates:
-- templates/01-sample-campaign-names.sql
-- templates/02-nc-sanity-check.sql
-- templates/proposal-message.md
-
-examples:
-- examples/example-A-audience-state-c.md
+metadata:
+  category: attribution
+  risk: R1
+  version: 1.2.1
+  last-updated: 2026-09-28
+  references:
+  - references/state-routing.md
+  - references/output-template.md
+  - references/edge-cases.md
+  - references/failure-modes.md
+  templates:
+  - templates/01-sample-campaign-names.txt
+  - templates/02-nc-sanity-check.txt
+  - templates/proposal-message.md
+  examples:
+  - examples/example-A-audience-state-c.md
 ---
 
 ## 1. Purpose
@@ -71,10 +69,10 @@ Detailed branch handling → `references/state-routing.md`
 
 <callout emoji="🛑">
 **HARD RULE — read real campaign names first; never fabricate examples**
-Before proposing any extraction rule, copy `templates/01-sample-campaign-names.sql` to pull 5–10 real `campaign_name` / `ad_name` values from `database-query-run`. Then propose a rule that matches the observed pattern. **Fabricated examples destroy user trust the moment they don't match the user's actual campaigns.**
+Before proposing any extraction rule, copy `templates/01-sample-campaign-names.txt` to pull 5–10 real `campaign_name` / `ad_name` values from `database-query-run`. Then propose a rule that matches the observed pattern. **Fabricated examples destroy user trust the moment they don't match the user's actual campaigns.**
 </callout>
 
-1. **Look at real ad names** via `templates/01-sample-campaign-names.sql`
+1. **Look at real ad names** via `templates/01-sample-campaign-names.txt`
 2. **Identify the candidate location**: separator-delimited tokens (`BRAND_REGION_AUDIENCE_DATE`), prefix tags (`[US] Meta Prospecting`), suffix tags (`... | audience: VIP`)
 3. **Recommend method in business language**: copy `templates/proposal-message.md`. Show 2-3 example campaigns mapped to the proposed value. **One confirmation question max** — never ask "what separator?" + "what position?" + "case-sensitive?" in the same message.
 4. **Apply via `naming-convention-create`** after explicit user confirmation (R1 write at system level + audit log)
@@ -94,7 +92,7 @@ Before proposing any extraction rule, copy `templates/01-sample-campaign-names.s
 
 <callout emoji="💡">
 **Don't take the bait — never hand off without sanity-checking the new property**
-If most rows resolve to NULL, the rule is wrong and the user will get an empty dashboard. Copy `templates/02-nc-sanity-check.sql` and confirm the new propertyName resolves to non-empty values for > 70% of rows. If lower, surface the failure: *"The rule I tried only caught X% of your campaigns. Here are the ones it missed — want me to adjust?"* Offer 1-2 alternative interpretations; do NOT silently hand off bad data.
+If most rows resolve to NULL, the rule is wrong and the user will get an empty dashboard. Copy `templates/02-nc-sanity-check.txt` and confirm the new propertyName resolves to non-empty values for > 70% of rows. If lower, surface the failure: *"The rule I tried only caught X% of your campaigns. Here are the ones it missed — want me to adjust?"* Offer 1-2 alternative interpretations; do NOT silently hand off bad data.
 </callout>
 
 ## 5. Tools used
@@ -128,7 +126,7 @@ Proposal message template (copy this) → `templates/proposal-message.md`
 
 ## 7. CRITICAL rules (top 8 — full list in references/failure-modes.md)
 
-1. **Always pull real campaign names** via `templates/01-sample-campaign-names.sql` before proposing a rule — fabricated examples destroy trust
+1. **Always pull real campaign names** via `templates/01-sample-campaign-names.txt` before proposing a rule — fabricated examples destroy trust
 2. **Always sanity-check after applying** — if most rows are NULL, surface and adjust; never silently hand off bad data
 3. **Never silently substitute a nearby property** — if user asked for "audience" and tenant only has "segment", don't query "segment" without telling them
 4. **Never send user to UI to configure NC themselves** — the skill exists precisely so they don't have to

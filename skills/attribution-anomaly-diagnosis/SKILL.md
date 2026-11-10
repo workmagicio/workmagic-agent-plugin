@@ -1,31 +1,29 @@
 ---
 name: attribution-anomaly-diagnosis
 description: Diagnose "why" questions about attribution anomalies — attribution=0 (no attributed orders), and sudden drops, spikes or retroactive changes in attributed numbers. Do NOT use for "show me numbers" — that's attribution-data-query.
-category: attribution
-risk: R0
-version: 1.2.0
-last-updated: 2026-09-23
-
-references:
-- references/basic-checks.md
-- references/model-branches.md
-- references/fallback-structure.md
-- references/scenario-snippets.md
-- references/output-template.md
-- references/edge-cases.md
-- references/failure-modes.md
-
-templates:
-- templates/01-scope-lookup.sql
-- templates/02-spend-vs-attribution.sql
-- templates/03-measurement-readiness.sql
-- templates/04-utm-health.sql
-- templates/05-click-distribution.sql
-- templates/06-dda-vs-anyclick.sql
-- templates/07-lift-test-results.sql
-
-examples:
-- examples/example-A-meta-roas-drop.md
+metadata:
+  category: attribution
+  risk: R0
+  version: 1.2.0
+  last-updated: 2026-09-23
+  references:
+  - references/basic-checks.md
+  - references/model-branches.md
+  - references/fallback-structure.md
+  - references/scenario-snippets.md
+  - references/output-template.md
+  - references/edge-cases.md
+  - references/failure-modes.md
+  templates:
+  - templates/01-scope-lookup.txt
+  - templates/02-spend-vs-attribution.txt
+  - templates/03-measurement-readiness.txt
+  - templates/04-utm-health.txt
+  - templates/05-click-distribution.txt
+  - templates/06-dda-vs-anyclick.txt
+  - templates/07-lift-test-results.txt
+  examples:
+  - examples/example-A-meta-roas-drop.md
 ---
 
 ## 1. Purpose
@@ -70,13 +68,13 @@ Trigger when user is asking **why** attribution looks wrong, not just **what** t
 <callout emoji="🛑">
 **HARD RULE — copy a template first, then fill placeholders**
 BEFORE writing any SQL, **copy from `templates/`**:
-- `templates/01-scope-lookup.sql` — Step 1 cross-model comparison
-- `templates/02-spend-vs-attribution.sql` — Step 3a spend check
-- `templates/03-measurement-readiness.sql` — Step 3c readiness
-- `templates/04-utm-health.sql` — Branch A1 UTM
-- `templates/05-click-distribution.sql` — Branch A2 click shift
-- `templates/06-dda-vs-anyclick.sql` — Branch B1
-- `templates/07-lift-test-results.sql` — Branch C3 lift-test recalibration
+- `templates/01-scope-lookup.txt` — Step 1 cross-model comparison
+- `templates/02-spend-vs-attribution.txt` — Step 3a spend check
+- `templates/03-measurement-readiness.txt` — Step 3c readiness
+- `templates/04-utm-health.txt` — Branch A1 UTM
+- `templates/05-click-distribution.txt` — Branch A2 click shift
+- `templates/06-dda-vs-anyclick.txt` — Branch B1
+- `templates/07-lift-test-results.txt` — Branch C3 lift-test recalibration
 Copy template, fill placeholders (`{ads_platform}` / `{sales_platform}` / `{baseline_start}` / `{baseline_end}` / `{anomaly_start}` / `{anomaly_end}`). Do NOT write SQL from scratch.
 </callout>
 

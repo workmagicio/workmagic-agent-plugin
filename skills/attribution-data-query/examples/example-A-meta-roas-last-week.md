@@ -31,7 +31,7 @@ Confirm fields exist: `attr_all_sales`, `ad_spend`, `ads_platform`, `attr_model_
 
 ### Step 5 — Copy from template
 
-This is a single-platform channel-level ROAS query → match to `templates/01-channel-roas.sql`. Copy and fill:
+This is a single-platform channel-level ROAS query → match to `templates/01-channel-roas.txt`. Copy and fill:
 
 ```sql
 SELECT

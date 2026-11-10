@@ -19,14 +19,19 @@ workmagic-agent-plugin/
 ├── CHANGELOG.md                 # release notes; the release workflow publishes each version's section
 ├── examples/                    # sample conversations on the demo store (synthetic data)
 ├── .github/workflows/release.yml
-└── tools/                       # maintenance scripts (not part of the plugin's behavior)
+├── tools/                       # maintenance scripts (not part of the plugin's behavior)
+└── plugins/claude/              # GENERATED Claude-directory bundle (see below); self-contained, allowlisted file types only
 ```
+
+The repository root is the plugin folder for **Gemini, Codex, Cursor and local
+Claude install**. The **Claude directory** (the reviewed public listing) is
+submitted from `plugins/claude/` instead — see "Claude directory submission".
 
 ## Where each platform lists it
 
 | Platform | What gets listed | How to publish | Notes |
 |---|---|---|---|
-| **Claude** | MCP connector **and** plugin (two listings, paired) | claude.ai/directory/manage → *MCP connector* (server URL), then *Plugin bundle* (this repo, path `.`) | Any paid plan can submit; on Team/Enterprise an Owner |
+| **Claude** | MCP connector **and** plugin (two listings, paired) | claude.ai/directory/manage → *MCP connector* (server URL), then *Plugin bundle* (this repo, **plugin path `plugins/claude`** — NOT `.`) | Any paid plan can submit; on Team/Enterprise an Owner. Path must be `plugins/claude` so the scan sees only allowlisted files (see below) |
 | **ChatGPT** | One plugin = skills + the MCP server | OpenAI plugin portal: upload `dist/workmagic-chatgpt.zip`, verify the domain (`/.well-known/openai-apps-challenge` on mcp.workmagic.io), add test account, 5 positive + 3 negative test cases, a video | Needs a verified OpenAI org; website, support, privacy and terms URLs; MCP tool changes go live after a daily scan, skill changes need a new ZIP |
 | **Codex** | Plugin | Git marketplace now (`codex plugin marketplace add …`); official directory via the same OpenAI portal | |
 | **Cursor** | Plugin | Install from this repo; the official marketplace (cursor/plugins) is curated by Cursor — contact them for a listing | |
@@ -44,6 +49,34 @@ git diff                                  # review what changed upstream
 
 The sync script stops if one of its patches no longer matches upstream, or if a shipped skill
 still refers to the server-side skill loader or to a skill this release doesn't include.
+
+## Claude directory submission
+
+The public Claude directory only accepts, from a non-"Verified organization",
+an **allowlist of file types** (text / Markdown / JSON / YAML / PNG / JPEG / GIF
+/ WebP) and an **allowlist of SKILL.md frontmatter keys** (`name`,
+`description`, `license`, `allowed-tools`, `compatibility`, `metadata`). The
+repo root fails this (it ships `tools/*.py`, `.codex/config.toml`, etc.), so
+Claude is submitted from a generated, self-contained subfolder instead:
+
+```bash
+python3 tools/build_zip.py claude --dir   # → plugins/claude/
+git add plugins/claude && git commit      # commit it; the directory scans git
+```
+
+`build_zip.py claude --dir` copies `.claude-plugin/plugin.json`, `.mcp.json`,
+README, LICENSE, `skills/` and `assets/` into `plugins/claude/`, **skipping any
+file whose type isn't on the allowlist** (e.g. `assets/*.svg`). Submit with
+plugin path `plugins/claude` (see the table above). Regenerate and re-commit
+whenever `skills/`, `assets/`, `plugin.json` or `.mcp.json` change.
+
+Two rules the skills themselves must follow for the directory:
+
+- **No disallowed file types inside `skills/`** — SQL templates are `.txt`, not
+  `.sql`; reference the `.txt` path from the skill body.
+- **SKILL.md frontmatter**: only the six allowlisted keys at the top level.
+  Everything custom (`category`, `risk`, `version`, `references`, `templates`,
+  …) goes under `metadata:` (free-form; Claude ignores it).
 
 ## Release
 

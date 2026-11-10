@@ -1,12 +1,12 @@
 ---
 name: attribution-data-query
 description: Translate explicit data requests into Cube.dev SQL and return results. Default skill for query-type asks in the Attribution domain. No estimation, no fabrication, no proactive dashboards.
-category: attribution
-risk: R0
-version: 1.4.0
-last-updated: 2026-09-23
-
-references:
+metadata:
+  category: attribution
+  risk: R0
+  version: 1.4.0
+  last-updated: 2026-09-23
+  references:
   - references/time-range-resolution.md
   - references/attribution-model.md
   - references/sales-platform-scope.md
@@ -14,15 +14,13 @@ references:
   - references/sql-examples.md
   - references/edge-cases.md
   - references/failure-modes.md
-
-templates:
-  - templates/01-channel-roas.sql
-  - templates/02-top-n-campaigns.sql
-  - templates/03-period-over-period.sql
-  - templates/04-creative-headlines.sql
-  - templates/05-actual-store-sales.sql
-
-examples:
+  templates:
+  - templates/01-channel-roas.txt
+  - templates/02-top-n-campaigns.txt
+  - templates/03-period-over-period.txt
+  - templates/04-creative-headlines.txt
+  - templates/05-actual-store-sales.txt
+  examples:
   - examples/example-A-meta-roas-last-week.md
 ---
 
@@ -102,11 +100,11 @@ Ask `database-query-ask` about the warehouse's Cube.dev schema patterns. `databa
 > 🛑 **HARD RULE — copy a template first, then fill placeholders**
 >
 > BEFORE writing any SQL, you **MUST** match the user's query pattern to one of the 5 templates in `templates/`:
-> - `templates/01-channel-roas.sql` — single-platform channel-level ROAS
-> - `templates/02-top-n-campaigns.sql` — Top-N campaigns by metric
-> - `templates/03-period-over-period.sql` — WoW / MoM comparison (2 separate queries)
-> - `templates/04-creative-headlines.sql` — creative-level (JSON-array headlines)
-> - `templates/05-actual-store-sales.sql` — actual store sales (NOT attribution)
+> - `templates/01-channel-roas.txt` — single-platform channel-level ROAS
+> - `templates/02-top-n-campaigns.txt` — Top-N campaigns by metric
+> - `templates/03-period-over-period.txt` — WoW / MoM comparison (2 separate queries)
+> - `templates/04-creative-headlines.txt` — creative-level (JSON-array headlines)
+> - `templates/05-actual-store-sales.txt` — actual store sales (NOT attribution)
 >
 > **Copy the template, then fill placeholders** (`<tenant_id>` / `<attr_model>` / `<platform>` / `<start_date>` / `<end_date>`). Do NOT write SQL from scratch — past agents have produced wrong queries (case-sensitive platform names, missing `HAVING SUM(ad_spend) > 0`, average-of-ratios ROAS, window functions Cube rejects).
 >

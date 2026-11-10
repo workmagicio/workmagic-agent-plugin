@@ -1,16 +1,16 @@
 ---
 name: attribution-intent-clarification
 description: Resolve genuinely ambiguous attribution queries by asking ONE focused clarifying question, then hand off to attribution-data-query (or another skill). Never become a wall of questions.
-category: attribution
-risk: R0
-version: 1.1.0
-last-updated: 2026-09-23
-
-references:
-- references/ambiguity-types.md
-- references/output-template.md
-- references/edge-cases.md
-- references/failure-modes.md
+metadata:
+  category: attribution
+  risk: R0
+  version: 1.1.0
+  last-updated: 2026-09-23
+  references:
+  - references/ambiguity-types.md
+  - references/output-template.md
+  - references/edge-cases.md
+  - references/failure-modes.md
 ---
 
 ## 1. Purpose
