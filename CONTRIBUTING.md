@@ -35,9 +35,9 @@ submitted from `plugins/claude/` instead — see "Claude directory submission".
 | **ChatGPT** | One plugin = skills + the MCP server | OpenAI plugin portal: upload `dist/workmagic-chatgpt.zip`, verify the domain (`/.well-known/openai-apps-challenge` on mcp.workmagic.io), add test account, 5 positive + 3 negative test cases, a video | Needs a verified OpenAI org; website, support, privacy and terms URLs; MCP tool changes go live after a daily scan, skill changes need a new ZIP |
 | **Codex** | Plugin | Git marketplace now (`codex plugin marketplace add …`); official directory via the same OpenAI portal | |
 | **Cursor** | Plugin | Install from this repo; the official marketplace (cursor/plugins) is curated by Cursor — contact them for a listing | |
-| **GitHub Copilot / VS Code** | Plugin (Agent Plugins format) and/or MCP server | Plugin: install from repo. Server: publish `server.json` (maintained in the MCP server repo) to the official MCP Registry with `mcp-publisher` — VS Code and GitHub's MCP registry read from it | |
+| **GitHub Copilot / VS Code** | Plugin (Agent Plugins format) and/or MCP server | Plugin: install from repo. Server: publish `server.json` (repo root) to the official MCP Registry with `mcp-publisher` — VS Code and GitHub's MCP registry read from it | |
 | **Gemini CLI** | Extension | Public repo + GitHub topic `gemini-cli-extension`; the gallery crawler picks it up daily after a tagged release | Manifest must be at the repo root |
-| **Everything else** | MCP server | Official MCP Registry (`io.github.workmagicio/workmagic-mcp` from the MCP server repo's `server.json`) | Smithery, PulseMCP etc. index the registry |
+| **Everything else** | MCP server | Official MCP Registry (`io.github.workmagicio/workmagic-mcp` from `server.json` at the repo root) | Smithery, PulseMCP etc. index the registry |
 
 
 ## Update the skills
@@ -77,6 +77,31 @@ Two rules the skills themselves must follow for the directory:
 - **SKILL.md frontmatter**: only the six allowlisted keys at the top level.
   Everything custom (`category`, `risk`, `version`, `references`, `templates`,
   …) goes under `metadata:` (free-form; Claude ignores it).
+
+## MCP Registry (server.json)
+
+`server.json` at the repo root registers the **remote** MCP server with the
+official MCP Registry under `io.github.workmagicio/workmagic-mcp`. It only names
+the endpoint (`remotes: streamable-http https://mcp.workmagic.io/mcp`); OAuth is
+discovered from the server itself, so there is no credential in the file.
+Registering here is what feeds the downstream aggregators (Smithery, Glama,
+MCP.so, PulseMCP) that index the registry.
+
+Publish (one-time, and after any change to the endpoint or a version bump):
+
+```bash
+brew install mcp-publisher              # or: go install github.com/modelcontextprotocol/registry/cmd/mcp-publisher@latest
+mcp-publisher login github              # device-code; sign in as a github.com/workmagicio member (verifies the io.github.workmagicio namespace)
+mcp-publisher validate server.json
+mcp-publisher publish server.json
+```
+
+A published `version` is immutable — bump `version` in `server.json` to publish
+again. Confirm with the registry API afterwards (search for the name).
+
+Aggregators that don't read the registry: **Glama** crawls the public GitHub
+repo (already tagged `mcp`) and can be claimed; **Smithery** and **MCP.so** take
+a manual submission of the remote server URL on their site.
 
 ## Release
 
