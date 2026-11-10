@@ -34,6 +34,9 @@ jobs:
       - name: Build ChatGPT ZIP
         run: python3 tools/build_zip.py chatgpt
 
+      - name: Build Codex ZIP
+        run: python3 tools/build_zip.py codex
+
       - name: Extract changelog notes
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
@@ -56,5 +59,6 @@ jobs:
         run: |
           gh release create "$GITHUB_REF_NAME" \
             dist/workmagic-chatgpt.zip \
+            dist/workmagic-codex.zip \
             --title "$GITHUB_REF_NAME" \
             --notes-file notes.md

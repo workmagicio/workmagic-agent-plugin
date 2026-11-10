@@ -18,7 +18,7 @@ The first-time experience: a tenant that's never set up NC asks for a query that
 
 Ask `database-query-ask` for NC schema. Get `ctx`.
 
-Copy `templates/01-sample-campaign-names.sql`, filter to Meta. Returns:
+Copy `templates/01-sample-campaign-names.txt`, filter to Meta. Returns:
 
 | campaign_name | spend_last_30d |
 |-|-|
@@ -62,7 +62,7 @@ Call `naming-convention-create` with: propertyName="Audience", method=position, 
 
 #### Step 6 — Sanity check
 
-Copy `templates/02-nc-sanity-check.sql`, fill `{new_property_name}=Audience`. Result: 14 distinct non-NULL audiences (VIP / Lookalike1 / Lookalike2 / NewCustomer / etc.), NULL row share = 4%. ✓ Hand off.
+Copy `templates/02-nc-sanity-check.txt`, fill `{new_property_name}=Audience`. Result: 14 distinct non-NULL audiences (VIP / Lookalike1 / Lookalike2 / NewCustomer / etc.), NULL row share = 4%. ✓ Hand off.
 
 #### Step 7 — Continue original query
 
@@ -83,7 +83,7 @@ Hand off to `attribution-data-query` with: metric=ROAS, dimension=Audience, ads_
 
 ### What this example illustrates
 
-- **Real campaign names** from `templates/01-sample-campaign-names.sql` — agent did not invent `Meta_Prospecting_VIP_Holiday2025`
+- **Real campaign names** from `templates/01-sample-campaign-names.txt` — agent did not invent `Meta_Prospecting_VIP_Holiday2025`
 - **Business-language pattern description** ("the third segment between underscores") — not "position 2 of split('\_')"
 - **One confirmation question** only — no multi-question form about separator, position, name, case-sensitivity
 - **Follow-through promise** ("I'll pull the audience-level ROAS you asked for") — agent did not require user to restate

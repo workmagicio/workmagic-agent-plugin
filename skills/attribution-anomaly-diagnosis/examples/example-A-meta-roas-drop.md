@@ -14,7 +14,7 @@ Ask: *"How to compare attribution models in dws_view_analytics_attribution_chann
 
 #### Step 1 — Lock the scope
 
-Copy `templates/01-scope-lookup.sql`, fill: `ads_platform=Meta`, baseline = prev 7 days, anomaly = last 7 days. Result: iDDA dropped 38%, DDA dropped 12%, Any Click flat. **iDDA is the diverging model.**
+Copy `templates/01-scope-lookup.txt`, fill: `ads_platform=Meta`, baseline = prev 7 days, anomaly = last 7 days. Result: iDDA dropped 38%, DDA dropped 12%, Any Click flat. **iDDA is the diverging model.**
 
 #### Step 2 — Classify
 
@@ -22,7 +22,7 @@ Numeric value exists, sharp drop. **Type: attribution swing.**
 
 #### Step 3a — Spend check
 
-Copy `templates/02-spend-vs-attribution.sql`. Spend flat WoW (\~\$50K both weeks). **Not proportional → continue.**
+Copy `templates/02-spend-vs-attribution.txt`. Spend flat WoW (\~\$50K both weeks). **Not proportional → continue.**
 
 #### Step 5, Branch C — iDDA
 
@@ -30,7 +30,7 @@ Copy `templates/02-spend-vs-attribution.sql`. Spend flat WoW (\~\$50K both weeks
 
 **C2 PPS**: no daily revisions, value drop is week-on-week not retro-edits. → unlikely PPS.
 
-**C3 Lift test**: copy `templates/07-lift-test-results.sql`. Latest lift test for Meta completed 5 days before the anomaly window. `LIFT_PCT` = 0.18 (down from 0.42 previous), `auto_apply=1`. **This is the trigger.**
+**C3 Lift test**: copy `templates/07-lift-test-results.txt`. Latest lift test for Meta completed 5 days before the anomaly window. `LIFT_PCT` = 0.18 (down from 0.42 previous), `auto_apply=1`. **This is the trigger.**
 
 #### Step 6 — Skip (cause found at C3)
 

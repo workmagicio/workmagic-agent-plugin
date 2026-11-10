@@ -1,12 +1,12 @@
 ---
 name: mbo-create-scenario
 description: Turn a natural-language ask about media budget optimization into a configured MBO scenario — "how should I split my budget", "how much should I spend on X". Also handles rename, edit and delete on existing scenarios.
-category: mbo
-risk: R1
-version: 1.1.0
-last-updated: 2026-09-23
-
-references:
+metadata:
+  category: mbo
+  risk: R1
+  version: 1.1.0
+  last-updated: 2026-09-23
+  references:
   - references/inputs-detail.md
   - references/reference-period-rules.md
   - references/budget-parsing.md
@@ -18,12 +18,10 @@ references:
   - references/edge-cases.md
   - references/failure-modes.md
   - references/key-concepts.md
-
-templates:
+  templates:
   - templates/scenario-preview.md
   - templates/saturation-proposal.md
-
-examples:
+  examples:
   - examples/example-october-budget.md
 ---
 
