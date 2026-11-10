@@ -7,7 +7,7 @@
     "url": "https://github.com/workmagicio/workmagic-agent-plugin",
     "source": "github"
   },
-  "websiteUrl": "https://workmagic.io",
+  "websiteUrl": "https://workmagic.io/?utm_source=mcp-registry&utm_medium=referral&utm_campaign=agent-plugin&utm_content=server-json",
   "remotes": [
     {
       "type": "streamable-http",
