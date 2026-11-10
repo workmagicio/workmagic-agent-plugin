@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.workmagicio/workmagic-mcp",
+  "description": "Marketing attribution, incrementality and budget planning from your WorkMagic account.",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/workmagicio/workmagic-agent-plugin",
+    "source": "github"
+  },
+  "websiteUrl": "https://workmagic.io",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.workmagic.io/mcp"
+    }
+  ]
+}
