@@ -1,7 +1,7 @@
 {
   "name": "workmagic",
   "displayName": "WorkMagic",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "icon": "./assets/logo.png",
   "description": "Ask questions about your WorkMagic attribution data, diagnose swings, compare attribution models, read lift test results, and plan media budgets — using your own WorkMagic account through the WorkMagic MCP server.",
   "author": {
