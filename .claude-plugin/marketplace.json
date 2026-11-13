@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "WorkMagic plugin for Claude.",
-    "version": "1.0.0"
+    "version": "1.0.2"
   },
   "plugins": [
     {
       "name": "workmagic",
       "source": "./",
       "description": "Attribution, lift test readouts and media budget planning from your WorkMagic data",
-      "version": "1.0.0"
+      "version": "1.0.2"
     }
   ]
 }
